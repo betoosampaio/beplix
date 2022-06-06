@@ -12,7 +12,7 @@ const Home = () => {
     }).then(e => console.log(e.data.data))
     
 
-    const DATA = [
+    const data = [
         {
           id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
           title: 'First Item',

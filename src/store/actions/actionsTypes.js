@@ -1,2 +1,3 @@
 export const LOGIN_CHANGED = 'LOGIN_CHANGED'
 export const PASSWORD_CHANGED = 'PASSWORD_CHANGED'
+export const LOAD_CRIPTO = 'LOAD_CRIPTO'

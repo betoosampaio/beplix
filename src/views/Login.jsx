@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Pressable, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { changeLogin, changePassword } from '../store/actions/login'
 
+
 const Login = props => {
     const { login, password } = props
     const axios = require('axios')
@@ -29,7 +30,7 @@ const Login = props => {
             <Text style={styles.title}>BEPLIX</Text>
 
             <Text style={styles.text}>Faça login em sua conta</Text>
-
+            
             <Text style={{ color: '#fff', fontWeight: 'bold' }}>Login</Text>
             <TextInput
                 style={styles.input}

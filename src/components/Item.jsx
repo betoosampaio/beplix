@@ -1,31 +1,51 @@
 import React from 'react'
 import { Text, View, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { selectCripto } from '../store/actions/selectCripto'
+import { connect } from 'react-redux'
 
-  const Item = ({ title }) => (
+const Item = ( {title, navigation, id, ...props} ) => {
+  const onPress = () => {
+    navigation.navigate('Transação')
+    props.selectCripto(id)
+  }
+
+  return (
     <View style={styles.item}>
-      <TouchableOpacity style={{flexDirection:'row'}}>
-        <Icon name="bitcoin" size={25} color="#DAA520" style={{marginRight: 10}}/>
+      <TouchableOpacity onPress={onPress} style={{ flexDirection: 'row' }}>
+        <Icon name="bitcoin" size={25} color="#DAA520" style={{ marginRight: 10 }} />
         <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
     </View>
-  );
+  )
 
-  
+};
+
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: StatusBar.currentHeight || 0,
-    },
-    item: {
-      backgroundColor: '#FFF0F5',
-      padding: 20,
-      marginVertical: 8,
-      marginHorizontal: 16,
-    },
-    title: {
-      fontSize: 20,
-    },
-  });
+  item: {
+    backgroundColor: '#FFF0F5',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 20,
+  },
+});
 
-  export default Item
+const mapStateToProps = state => {
+  return {
+      selectCripto: state.selectCripto.selectCripto
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    selectCripto(cripto) {
+          const action = selectCripto(cripto)
+          dispatch(action)
+      }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Item)

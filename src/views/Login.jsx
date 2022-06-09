@@ -10,7 +10,7 @@ const Login = props => {
     const [errorPw, setErrorPw] = useState('')
     const [errorLogin, setErrorLogin] = useState('')
 
-    const sendLogin = ({navigation}) => {
+    const sendLogin = () => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${login}/`)
         .then(e => checkPassword(e.data.moves))
         .catch(e => setErrorLogin('Login não encontrado!'))

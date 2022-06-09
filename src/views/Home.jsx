@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { View, FlatList } from 'react-native';
-import Item from '../components/Item'
+import React, { useEffect } from 'react'
+import { View, FlatList, Text } from 'react-native';
 import { connect } from 'react-redux';
+import Item from '../components/Item'
 import { loadCripto } from '../store/actions/cripto'
 
 const Home = props => {
@@ -23,20 +23,19 @@ const Home = props => {
   }, [])
 
   const renderItem = ({ item }) => (
-    <Item title={item.title} />
+    <Item title={item.title} navigation={props.navigation} id={item.id} />
   );
 
   return (
-    <View>
+    <View style={{marginBottom: 30}}>
+      <Text style={{textAlign: 'center', fontSize: 20, marginTop: 10, marginBottom: 10}}>Selecione a moeda</Text>
       <FlatList
         data={cripto}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-    </View>
-    
+    </View>    
   )
-
 }
 
 const mapStateToProps = state => {

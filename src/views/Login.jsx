@@ -18,11 +18,7 @@ const Login = props => {
 
     const checkPassword = moves => {
         const names = moves.map(e => e.move.name)
-        if (names.includes(password)) {
-            props.navigation.navigate('Home')
-        } else {
-            setErrorPw('Senha inválida!')
-        }
+        names.includes(password) ? props.navigation.navigate('Home') : setErrorPw('Senha inválida!')
     }
 
     return (
@@ -36,8 +32,8 @@ const Login = props => {
                 style={styles.input}
                 onChangeText={text => props.changeLogin(text)}
                 value={login}
-                placeholder={'000.000.000-12'}
-                placeholderTextColor="white"
+                placeholder={'login'}
+                placeholderTextColor={'rgba(255,255,255,0.3)'}
             />
 
             <Text style={{ color: '#fff', fontWeight: 'bold' }}>Senha</Text>
@@ -46,7 +42,8 @@ const Login = props => {
                 onChangeText={text => props.changePassword(text)}
                 value={password}
                 placeholder={'***********'}
-                placeholderTextColor="white"
+                placeholderTextColor={'rgba(255,255,255,0.3)'}
+                secureTextEntry={true}
             />
             <View style={{ alignItems: 'center' }}>
                 <Pressable style={styles.button} onPress={sendLogin}>

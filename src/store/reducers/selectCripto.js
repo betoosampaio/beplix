@@ -1,7 +1,7 @@
 import { SELECT_CRIPTO } from '../actions/actionsTypes'
 
 const initialState = {
-        selectCripto: [],
+        transaction: [],
 }
 
 const selectCriptoReducer = (state = initialState, action) => {    
